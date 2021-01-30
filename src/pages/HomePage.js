@@ -13,9 +13,15 @@ const HomePage = () => (
             <h2 className="is-size-5 has-text-white">CoolAccommodation</h2>
           </div>
         </div>
-        <div className="column is-half is-pulled-right">
-          <button className="" type="button">Login</button>
-          <button className="" type="button">Signup</button>
+        <div className="column is-half">
+          <div className="columns is-pulled-right">
+            <div className="column is-2 mx-5">
+              <button className="button is-dark is-rounded mx-2 is-uppercase" type="button">Sign In</button>
+            </div>
+            <div className="column is-2 mx-5">
+              <button className="button is-dark is-rounded mx-2 is-uppercase" type="button">Sign Up</button>
+            </div>
+          </div>
         </div>
       </nav>
       <div className="columns is-vcentered m-6">
