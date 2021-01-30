@@ -1,0 +1,9 @@
+.start-free-btn {
+  background-color: $orange-color;
+  color: $white-color;
+  border: none;
+
+  &:hover {
+    color: $white-color;
+  }
+}
