@@ -5,14 +5,28 @@ import logoUrl from '../assets/images/accommodation-logo.svg';
 
 const HomePage = () => (
   <div>
-    <div className="columns is-vcentered home-page-1">
-      <div className="column is-4 m-6">
-        <h1 className="is-size-2 has-text-white">Find accomodation from anywhere</h1>
-        <p className="is-size-5 has-text-white my-6">
-          The best offers for you at any point of your journey.
-          Wherever you are, feel yourself like at your own home
-        </p>
-        <button type="button" className="button is-rounded start-free-btn is-uppercase">Start free</button>
+    <div className="home-page-1">
+      <nav className="columns p-6">
+        <div className="column is-half">
+          <div className="columns">
+            <img src={logoUrl} alt="cool accommodation logo" className="image is-24x24 is-rounded" />
+            <h2 className="is-size-5 has-text-white">CoolAccommodation</h2>
+          </div>
+        </div>
+        <div className="column is-half is-pulled-right">
+          <button className="" type="button">Login</button>
+          <button className="" type="button">Signup</button>
+        </div>
+      </nav>
+      <div className="columns is-vcentered m-6">
+        <div className="column is-4">
+          <h1 className="is-size-2 has-text-white">Find accomodation from anywhere</h1>
+          <p className="is-size-5 has-text-white my-6">
+            The best offers for you at any point of your journey.
+            Wherever you are, feel yourself like at your own home
+          </p>
+          <button type="button" className="button is-rounded start-free-btn is-uppercase">Start free</button>
+        </div>
       </div>
     </div>
     <div className="columns is-vcentered is-centered home-page-2">
