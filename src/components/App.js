@@ -1,3 +1,10 @@
-const App = () => (<h1>Hello there! Welcome to the new world</h1>);
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './Routes';
+
+const App = () => (
+  <BrowserRouter>
+    <Routes />
+  </BrowserRouter>
+);
 
 export default App;

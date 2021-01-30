@@ -1,8 +1,8 @@
 const HomePage = () => (
   <div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div>This is homepage</div>
+    <div />
+    <div />
   </div>
 );
 
