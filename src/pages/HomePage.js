@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import accommodationPic from '../assets/images/accommodation-2.jpg';
+import logoUrl from '../assets/images/accommodation-logo.svg';
 
 const HomePage = () => (
   <div>
@@ -37,6 +40,20 @@ const HomePage = () => (
         <button type="button" className="start-free-btn button is-rounded is-uppercase">Start free</button>
       </div>
     </div>
+    <footer className="is-centered is-vcentered has-text-centered">
+      <div className="columns my-3 is-centered is-vcentered">
+        <img src={logoUrl} alt="cool accommodation logo" className="image is-24x24 is-rounded" />
+        <h2 className="is-size-5">CoolAccommodation</h2>
+      </div>
+      <p className="my-2 is-size-7">Rwanda, Western, Rubavu, Gisenyi</p>
+      <p className="my-2 is-size-7">+250701234567</p>
+      <div className="columns is-centered is-vcentered my-2">
+        <div className="is-one-third is-size-3 mx-2"><a href="https://www.facebook.com/"><FaFacebook /></a></div>
+        <div className="is-one-third is-size-3 mx-2"><a href="https://twitter.com/"><FaTwitter /></a></div>
+        <div className="is-one-third is-size-3 mx-2"><a href="https://www.instagram.com/"><FaInstagram /></a></div>
+      </div>
+      <p className="my-2 is-size-7">CoolAccommodation 2021. All right reserved</p>
+    </footer>
   </div>
 );
 
