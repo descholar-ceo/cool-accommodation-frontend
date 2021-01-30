@@ -15,4 +15,10 @@ body {
   height: 100vh;
 }
 
+.home-page-before-footer {
+  background: linear-gradient($black-middle-transparent, $black-middle-transparent), url("../images/accommodation-6.jpg") center center no-repeat fixed;
+  background-size: cover;
+  height: 20vh;
+}
+
 @import 'utilities'
