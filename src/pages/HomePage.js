@@ -51,7 +51,7 @@ const HomePage = () => (
           We will find best places for you and the conditions
           for a safe transaction and comfortable stay.
         </p>
-        <button type="button" className="start-free-btn button is-rounded is-uppercase">Start free</button>
+        <button type="button" className="start-free-btn button is-rounded is-uppercase">Trending accommodations</button>
       </div>
     </div>
     <div className="columns is-centered is-vcentered home-page-before-footer">
