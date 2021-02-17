@@ -24,7 +24,7 @@ const HomePage = ({ getAccommodationProfile, allFavourites }) => {
           <div className="column is-half">
             <div className="columns is-pulled-right">
               <div className="column is-2 mx-5">
-                <button className="button is-dark is-rounded mx-2 is-uppercase" type="button">Sign In</button>
+                <Link className="button is-dark is-rounded mx-2 is-uppercase" to="/signin">Sign In</Link>
               </div>
               <div className="column is-2 mx-5">
                 <button className="button is-dark is-rounded mx-2 is-uppercase" type="button">Sign Up</button>
@@ -39,7 +39,7 @@ const HomePage = ({ getAccommodationProfile, allFavourites }) => {
               The best offers for you at any point of your journey.
               Wherever you are, feel yourself like at your own home
             </p>
-            <button type="button" className="button is-rounded start-free-btn is-uppercase">Start free</button>
+            <Link to="/signin" className="button is-rounded start-free-btn is-uppercase">Start free</Link>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@ const HomePage = ({ getAccommodationProfile, allFavourites }) => {
       <div className="columns is-centered is-vcentered home-page-before-footer">
         <div className="column is-2 is-centered has-text-centered">
           <h2 className="has-text-white my-3">Be everywhere at home</h2>
-          <Link to="/login" className="start-free-btn button is-rounded is-uppercase">Start free</Link>
+          <Link to="/signin" className="start-free-btn button is-rounded is-uppercase">Start free</Link>
         </div>
       </div>
       <footer className="is-centered is-vcentered has-text-centered">
