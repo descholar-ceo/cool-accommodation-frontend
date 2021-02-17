@@ -3,6 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import accommodationPic from '../assets/images/accommodation-2.jpg';
 import logoUrl from '../assets/images/accommodation-logo.svg';
 import { getAccommodationProfile } from '../redux/actions';
@@ -64,7 +65,7 @@ const HomePage = ({ getAccommodationProfile, allFavourites }) => {
       <div className="columns is-centered is-vcentered home-page-before-footer">
         <div className="column is-2 is-centered has-text-centered">
           <h2 className="has-text-white my-3">Be everywhere at home</h2>
-          <button type="button" className="start-free-btn button is-rounded is-uppercase">Start free</button>
+          <Link to="/login" className="start-free-btn button is-rounded is-uppercase">Start free</Link>
         </div>
       </div>
       <footer className="is-centered is-vcentered has-text-centered">
