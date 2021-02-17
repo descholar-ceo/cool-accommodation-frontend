@@ -21,4 +21,14 @@ body {
   height: 20vh;
 }
 
+.login-component {
+  background-color: $black-middle-transparent;
+  border-radius: 5px;
+  color: $white-color;
+}
+
+.login-container {
+  background-image: url("../images/accommodation-0.svg");
+}
+
 @import 'utilities'
