@@ -8,8 +8,8 @@ import accommodationPic from '../assets/images/accommodation-2.jpg';
 import logoUrl from '../assets/images/accommodation-logo.svg';
 import { getAccommodationProfile } from '../redux/actions';
 
-const HomePage = ({ getAccommodationProfile, allFavourites }) => {
-  console.log(allFavourites.allFavourites);
+const HomePage = ({ getAccommodationProfile }) => {
+  // console.log(allFavourites.allFavourites);
   useEffect(() => getAccommodationProfile(), []);
   return (
     <div>
@@ -88,7 +88,7 @@ const HomePage = ({ getAccommodationProfile, allFavourites }) => {
 
 HomePage.propTypes = {
   getAccommodationProfile: PropTypes.func.isRequired,
-  allFavourites: PropTypes.arrayOf().isRequired,
+  // allFavourites: PropTypes.arrayOf().isRequired,
 };
 
 const mapStateToProps = state => ({ allFavourites: state.favouritesReducer });
