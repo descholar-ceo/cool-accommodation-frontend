@@ -6,6 +6,7 @@ const LoginPage = () => (
     <div className="column is-4 login-component">
       <TextInput placeholder="Enter your username here..." />
       <TextInput placeholder="Enter your password here..." />
+      <button type="button" className="button is-link is-rounded my-2 is-small">Signin</button>
       <div>
         <p>
           You don&apos;t have an account?
