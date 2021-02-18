@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 
-const TextInput = ({ placeholder }) => (
+const TextInput = ({ placeholder, inputType }) => (
   <div>
-    <input type="text" placeholder={placeholder} className="input is-small my-2" />
+    <input type={inputType} placeholder={placeholder} className="input is-small my-2" />
   </div>
 );
 
 TextInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
+  inputType: PropTypes.string.isRequired,
 };
 
 export default TextInput;
