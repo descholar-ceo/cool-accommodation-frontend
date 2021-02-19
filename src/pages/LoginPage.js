@@ -8,8 +8,8 @@ const LoginPage = () => (
     <Navbar bg="has-background-primary-dark" />
     <div className="columns is-centered is-vcentered height-70 login-container">
       <div className="column is-4 login-component">
-        <TextInput inputType="text" placeholder="Enter your username here..." />
-        <TextInput inputType="password" placeholder="Enter your password here..." />
+        <TextInput name="email" inputType="text" placeholder="Enter your email here..." />
+        <TextInput name="password" inputType="password" placeholder="Enter your password here..." />
         <button type="button" className="button is-link is-rounded my-2 is-small">Signin</button>
         <div>
           <p>
