@@ -6,7 +6,7 @@ import TextInput from '../components/TextInput';
 const LoginPage = () => (
   <>
     <Navbar bg="has-background-primary-dark" />
-    <div className="columns is-centered is-vcentered full-height login-container">
+    <div className="columns is-centered is-vcentered height-70 login-container">
       <div className="column is-4 login-component">
         <TextInput inputType="text" placeholder="Enter your username here..." />
         <TextInput inputType="password" placeholder="Enter your password here..." />
