@@ -15,7 +15,7 @@ const HomePage = ({ getAccommodationProfile }) => {
   return (
     <div>
       <div className="home-page-1">
-        <Navbar />
+        <Navbar bg="none" />
         <div className="columns is-vcentered m-6">
           <div className="column is-4">
             <h1 className="is-size-2 has-text-white">Find accomodation from anywhere</h1>
