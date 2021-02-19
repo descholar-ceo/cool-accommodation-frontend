@@ -10,7 +10,7 @@ const LoginPage = () => (
       <div>
         <p>
           You don&apos;t have an account?
-          <Link to="/signin" className="button is-dark is-rounded mx-2 is-uppercase is-small">Signup</Link>
+          <Link to="/signup" className="button is-dark is-rounded mx-2 is-uppercase is-small">Signup</Link>
         </p>
       </div>
     </div>

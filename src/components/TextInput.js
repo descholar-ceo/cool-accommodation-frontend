@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const TextInput = ({ placeholder, inputType }) => (
   <div>
-    <input type={inputType} placeholder={placeholder} className="input is-small my-2" />
+    <input type={inputType} placeholder={placeholder} className="input is-small my-1" />
   </div>
 );
 
