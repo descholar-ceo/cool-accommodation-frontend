@@ -1,5 +1,5 @@
-const { Link } = require('react-router-dom');
-const { default: TextInput } = require('../components/TextInput');
+import { Link } from 'react-router-dom';
+import TextInput from '../components/TextInput';
 
 const LoginPage = () => (
   <div className="columns is-centered is-vcentered full-height login-container">
