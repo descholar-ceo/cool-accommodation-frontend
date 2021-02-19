@@ -9,6 +9,7 @@ import {
   GET_MY_FAVOURITES_ACTION,
   GET_ACCOMMODATION_PROFILE,
   LOGIN_ACTION,
+  LOGIN_CREDENTIAL_TYPING_ACTION,
 } from './actionsTypes';
 
 export const getAllFavouritesAction = () => async dispatch => {
@@ -30,3 +31,7 @@ export const loginAction = credentials => async dispatch => {
   const results = await axios.post(LOGIN_API(credentials));
   dispatch({ token: results.data, type: LOGIN_ACTION });
 };
+
+export const loginCredentialTypingAction = credentials => ({
+  credentials, type: LOGIN_CREDENTIAL_TYPING_ACTION,
+});
