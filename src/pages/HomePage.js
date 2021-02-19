@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import accommodationPic from '../assets/images/accommodation-2.jpg';
-import logoUrl from '../assets/images/accommodation-logo.svg';
+import Navbar from '../components/Navbar';
 import { getAccommodationProfile } from '../redux/actions';
+import logoUrl from '../assets/images/accommodation-logo.svg';
 
 const HomePage = ({ getAccommodationProfile }) => {
   // console.log(allFavourites.allFavourites);
@@ -14,24 +15,7 @@ const HomePage = ({ getAccommodationProfile }) => {
   return (
     <div>
       <div className="home-page-1">
-        <nav className="columns p-6">
-          <div className="column is-half">
-            <div className="columns">
-              <img src={logoUrl} alt="cool accommodation logo" className="image is-24x24 is-rounded" />
-              <h2 className="is-size-5 has-text-white">CoolAccommodation</h2>
-            </div>
-          </div>
-          <div className="column is-half">
-            <div className="columns is-pulled-right">
-              <div className="column is-2 mx-5">
-                <Link className="button is-dark is-rounded mx-2 is-uppercase" to="/signin">Sign In</Link>
-              </div>
-              <div className="column is-2 mx-5">
-                <button className="button is-dark is-rounded mx-2 is-uppercase" type="button">Sign Up</button>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Navbar />
         <div className="columns is-vcentered m-6">
           <div className="column is-4">
             <h1 className="is-size-2 has-text-white">Find accomodation from anywhere</h1>
