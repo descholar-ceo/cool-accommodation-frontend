@@ -32,10 +32,12 @@ const LoginPage = ({ loginCredentials, loginAction }) => {
 LoginPage.propTypes = {
   loginCredentials: PropTypes.objectOf(PropTypes.string).isRequired,
   loginAction: PropTypes.func.isRequired,
+  // error: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   loginCredentials: state.loginReducer.loginCredentials,
+  error: state.loginReducer.error,
 });
 
 export default connect(mapStateToProps, { loginAction })(LoginPage);
