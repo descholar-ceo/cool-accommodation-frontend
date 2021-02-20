@@ -29,7 +29,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  previousLoginCred: PropTypes.objectOf().isRequired,
+  previousLoginCred: PropTypes.objectOf(PropTypes.object).isRequired,
   captureCredential: PropTypes.func.isRequired,
 };
 
