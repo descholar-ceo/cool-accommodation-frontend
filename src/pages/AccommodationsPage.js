@@ -10,7 +10,7 @@ const AccommodationPage = ({ token }) => {
     </h1>
   ) : (<h1>Login first</h1>);
   return (
-    { renderedComponent }
+    <renderedComponent />
   );
 };
 

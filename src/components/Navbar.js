@@ -19,7 +19,10 @@ const Navbar = ({ bg, token }) => {
     <div className="column is-half">
       <div className="columns is-pulled-right">
         <div className="column is-2 mx-5">
-          <button className="button is-danger is-rounded mx-2 is-uppercase" type="button">Logout</button>
+          <NavLink className="button is-primary is-rounded mx-2 is-uppercase is-small" to="/accommodations">Accommodations</NavLink>
+        </div>
+        <div className="column is-2 mx-5">
+          <button className="button is-danger is-rounded mx-2 is-uppercase is-small" type="button">Logout</button>
         </div>
       </div>
     </div>
