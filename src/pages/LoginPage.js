@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
 import TextInput from '../components/TextInput';
+import { loginAction } from '../redux/actions';
 
-const LoginPage = ({ loginCredentials }) => {
+const LoginPage = ({ loginCredentials, loginAction }) => {
   const handleSubmit = () => {
-    console.log(loginCredentials);
+    loginAction(loginCredentials);
   };
   return (
     <>
@@ -30,10 +31,11 @@ const LoginPage = ({ loginCredentials }) => {
 
 LoginPage.propTypes = {
   loginCredentials: PropTypes.objectOf(PropTypes.string).isRequired,
+  loginAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   loginCredentials: state.loginReducer.loginCredentials,
 });
 
-export default connect(mapStateToProps, null)(LoginPage);
+export default connect(mapStateToProps, { loginAction })(LoginPage);

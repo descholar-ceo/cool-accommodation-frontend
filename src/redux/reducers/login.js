@@ -1,8 +1,9 @@
-import { LOGIN_ACTION, LOGIN_CREDENTIAL_TYPING_ACTION } from '../actions/actionsTypes';
+import { GET_ERRORS_ACTION, LOGIN_ACTION, LOGIN_CREDENTIAL_TYPING_ACTION } from '../actions/actionsTypes';
 
 const initialState = {
   token: '',
   loginCredentials: {},
+  error: '',
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -11,6 +12,8 @@ const loginReducer = (state = initialState, action) => {
       return { ...state, token: action.token };
     case LOGIN_CREDENTIAL_TYPING_ACTION:
       return { ...state, loginCredentials: action.credentials };
+    case GET_ERRORS_ACTION:
+      return { ...state, error: action.error };
     default:
       return state;
   }

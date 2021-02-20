@@ -10,6 +10,7 @@ import {
   GET_ACCOMMODATION_PROFILE,
   LOGIN_ACTION,
   LOGIN_CREDENTIAL_TYPING_ACTION,
+  GET_ERRORS_ACTION,
 } from './actionsTypes';
 
 export const getAllFavouritesAction = () => async dispatch => {
@@ -28,8 +29,12 @@ export const getAccommodationProfile = accommId => async dispatch => {
 };
 
 export const loginAction = credentials => async dispatch => {
-  const results = await axios.post(LOGIN_API, credentials);
-  dispatch({ token: results.data, type: LOGIN_ACTION });
+  try {
+    const results = await axios.post(LOGIN_API, credentials);
+    dispatch({ token: results.data, type: LOGIN_ACTION });
+  } catch (err) {
+    dispatch({ error: err.response.data, type: GET_ERRORS_ACTION });
+  }
 };
 
 export const loginCredentialTypingAction = credentials => ({
