@@ -18,8 +18,8 @@ export const getAllFavouritesAction = () => async dispatch => {
   dispatch({ allFavourites: favouriteAccomm.data, type: GET_ALL_FAVOURITES_ACTION });
 };
 
-export const getMyFavouritesAction = () => async dispatch => {
-  const favouriteAccomm = await axios.get(MY_FAVOURITES_API);
+export const getMyFavouritesAction = myId => async dispatch => {
+  const favouriteAccomm = await axios.get(MY_FAVOURITES_API(myId));
   dispatch({ myFavourites: favouriteAccomm.data, type: GET_MY_FAVOURITES_ACTION });
 };
 
