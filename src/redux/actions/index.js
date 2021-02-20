@@ -28,7 +28,7 @@ export const getAccommodationProfile = accommId => async dispatch => {
 };
 
 export const loginAction = credentials => async dispatch => {
-  const results = await axios.post(LOGIN_API(credentials));
+  const results = await axios.post(LOGIN_API, credentials);
   dispatch({ token: results.data, type: LOGIN_ACTION });
 };
 
