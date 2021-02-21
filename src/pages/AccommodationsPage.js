@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 // import { useEffect } from 'react';
 
 const AccommodationPage = ({ token }) => {
-  const renderedComponent = token ? (
-    <h1>
-      Hello this is my id
-      {token}
-    </h1>
-  ) : (<h1>Login first</h1>);
+  const renderedComponent = token
+    ? (
+      <h1>
+        Hello this is my id
+        {token}
+      </h1>
+    )
+    : <h1>Login first</h1>;
   return (
-    <renderedComponent />
+    <div>
+      { renderedComponent }
+    </div>
   );
 };
 
