@@ -3,6 +3,7 @@ import {
   BASE_API, MY_FAVOURITES_API,
   ACCOMMODATION_PROFILE_API,
   LOGIN_API,
+  ALL_ACCOMMODATIONS_API,
 } from '../../assets/samples/apis';
 import {
   GET_ALL_FAVOURITES_ACTION,
@@ -11,11 +12,17 @@ import {
   LOGIN_ACTION,
   LOGIN_CREDENTIAL_TYPING_ACTION,
   GET_ERRORS_ACTION,
+  GET_ALL_ACCOMMODATIONS_ACTION,
 } from './actionsTypes';
 
 export const getAllFavouritesAction = () => async dispatch => {
   const favouriteAccomm = await axios.get(BASE_API);
   dispatch({ allFavourites: favouriteAccomm.data, type: GET_ALL_FAVOURITES_ACTION });
+};
+
+export const getAllAccommodations = () => async dispatch => {
+  const accommodations = await axios.get(ALL_ACCOMMODATIONS_API);
+  dispatch({ allFavourites: accommodations.data, type: GET_ALL_ACCOMMODATIONS_ACTION });
 };
 
 export const getMyFavouritesAction = myId => async dispatch => {
