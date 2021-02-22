@@ -17,7 +17,7 @@ const AccommodationPage = ({ token, getAllAccommodations }) => {
     ? (
       <h1>
         Hello this is my id
-        {/* decodedToken */}
+        {decodedToken.id}
       </h1>
     )
     : <h1>Login first</h1>;
