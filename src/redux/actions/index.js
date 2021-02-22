@@ -23,7 +23,7 @@ export const getAllFavouritesAction = () => async dispatch => {
 export const getAllAccommodations = token => async dispatch => {
   try {
     const accommodations = await axios.get(ALL_ACCOMMODATIONS_API,
-      { headers: { HTTP_AUTHORIZATION: token } });
+      { headers: { token } });
     dispatch({ allAccommodations: accommodations.data, type: GET_ALL_ACCOMMODATIONS_ACTION });
   } catch (err) {
     dispatch({ error: err.response.data, type: GET_ERRORS_ACTION });
