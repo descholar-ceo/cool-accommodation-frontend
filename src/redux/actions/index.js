@@ -20,9 +20,14 @@ export const getAllFavouritesAction = () => async dispatch => {
   dispatch({ allFavourites: favouriteAccomm.data, type: GET_ALL_FAVOURITES_ACTION });
 };
 
-export const getAllAccommodations = () => async dispatch => {
-  const accommodations = await axios.get(ALL_ACCOMMODATIONS_API);
-  dispatch({ allFavourites: accommodations.data, type: GET_ALL_ACCOMMODATIONS_ACTION });
+export const getAllAccommodations = token => async dispatch => {
+  try {
+    const accommodations = await axios.get(ALL_ACCOMMODATIONS_API,
+      { headers: { HTTP_AUTHORIZATION: token } });
+    dispatch({ allAccommodations: accommodations.data, type: GET_ALL_ACCOMMODATIONS_ACTION });
+  } catch (err) {
+    dispatch({ error: err.response.data, type: GET_ERRORS_ACTION });
+  }
 };
 
 export const getMyFavouritesAction = myId => async dispatch => {

@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import jwt from 'jsonwebtoken';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
+import { getAllAccommodations } from '../redux/actions';
 
-const AccommodationPage = ({ token }) => {
+const AccommodationPage = ({ token, getAllAccommodations }) => {
   let decodedToken = '';
   try {
     decodedToken = jwt.decode(token);
+    useEffect(() => getAllAccommodations(token), []);
   } catch (err) {
     console.log(err);
   }
@@ -28,10 +30,11 @@ const AccommodationPage = ({ token }) => {
 
 AccommodationPage.propTypes = {
   token: PropTypes.string.isRequired,
+  getAllAccommodations: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   token: state.loginReducer.token,
 });
 
-export default connect(mapStateToProps, null)(AccommodationPage);
+export default connect(mapStateToProps, { getAllAccommodations })(AccommodationPage);

@@ -1,16 +1,18 @@
-import { GET_ALL_ACCOMMODATIONS_ACTION } from '../actions/actionsTypes';
+import { GET_ALL_ACCOMMODATIONS_ACTION, GET_ERRORS_ACTION } from '../actions/actionsTypes';
 
 const initialState = {
-  allFavourites: [],
+  allAccommodations: [],
 };
 
-const favouritesReducer = (state = initialState, action) => {
+const accommodationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_ACCOMMODATIONS_ACTION:
-      return { ...state, allFavourites: action.allFavourites };
+      return { ...state, allAccommodations: action.allAccommodations };
+    case GET_ERRORS_ACTION:
+      return { ...state, error: action.error };
     default:
       return state;
   }
 };
 
-export default favouritesReducer;
+export default accommodationsReducer;
