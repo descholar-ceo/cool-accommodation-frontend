@@ -12,7 +12,7 @@ const HomePage = ({ getAccommodationProfile }) => {
   return (
     <div className="home-page-1">
       <Navbar bg="none" />
-      <div className="columns is-vcentered mx-4">
+      <div className="columns is-vcentered mx-4 my-2">
         <div className="column is-4">
           <h1 className="is-size-5 has-text-white">Find accomodation from anywhere</h1>
           <p className="is-size-6 has-text-white my-4">
