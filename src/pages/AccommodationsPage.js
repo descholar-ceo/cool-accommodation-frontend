@@ -10,9 +10,9 @@ const AccommodationPage = ({ token, getAllAccommodations }) => {
     decodedToken = jwt.decode(token);
     useEffect(() => getAllAccommodations(token), []);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
-  console.log(decodedToken);
+  // console.log(decodedToken);
   const renderedComponent = token
     ? (
       <h1>
