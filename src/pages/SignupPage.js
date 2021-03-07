@@ -8,7 +8,7 @@ const SignupPage = () => (
   <>
     <Navbar bg="has-background-primary-dark" />
     <div className="columns is-centered is-vcentered height-70 login-container">
-      <div className="column is-4 login-component m-4">
+      <div className="column is-4 login-component">
         <TextInput inputType="email" placeholder="email" />
         <TextInput inputType="password" placeholder="password" />
         <TextInput inputType="password" placeholder="confirm password" />
