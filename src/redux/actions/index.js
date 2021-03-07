@@ -45,6 +45,7 @@ export const loginAction = credentials => async dispatch => {
     const results = await axios.post(LOGIN_API, credentials);
     dispatch({ token: results.data, type: LOGIN_ACTION });
   } catch (err) {
+    console.log({ err });
     dispatch({ error: err.response.data, type: GET_ERRORS_ACTION });
   }
 };
