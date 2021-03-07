@@ -5,38 +5,31 @@ import logoUrl from '../assets/images/accommodation-logo.svg';
 
 const Navbar = ({ bg, token }) => {
   const loginOrLogout = token.length === 0 ? (
-    <div className="column is-half">
-      <div className="columns is-pulled-right">
-        <div className="column is-2 mx-5">
-          <NavLink className="button is-dark is-rounded mx-2 is-uppercase" to="/signin">Sign In</NavLink>
-        </div>
-        <div className="column is-2 mx-5">
-          <NavLink className="button is-dark is-rounded mx-2 is-uppercase" to="/signup">Sign Up</NavLink>
-        </div>
+    <div className="grid-2-col">
+      <div>
+        <NavLink className="button is-small is-dark is-rounded mx-2 is-uppercase" to="/signin">Sign In</NavLink>
+      </div>
+      <div>
+        <NavLink className="button is-small is-dark is-rounded mx-2 is-uppercase" to="/signup">Sign Up</NavLink>
       </div>
     </div>
   ) : (
-    <div className="column is-half">
-      <div className="columns is-pulled-right">
-        <div className="column is-2 mx-5">
-          <NavLink className="button is-primary is-rounded mx-2 is-uppercase is-small" to="/accommodations">Accommodations</NavLink>
-        </div>
-        <div className="column is-2 mx-5">
-          <button className="button is-danger is-rounded mx-2 is-uppercase is-small" type="button">Logout</button>
-        </div>
+    <div className="grid-2-col">
+      <div>
+        <NavLink className="button is-small is-primary is-rounded mx-2 is-uppercase is-small" to="/accommodations">Accommodations</NavLink>
+      </div>
+      <div>
+        <button className="button is-small is-danger is-rounded mx-2 is-uppercase is-small" type="button">Logout</button>
       </div>
     </div>
   );
 
   return (
-    <nav className={`columns p-6 ${bg}`}>
-      <div className="column is-half">
-        <div className="columns">
-          <NavLink to="/">
-            <img src={logoUrl} alt="cool accommodation logo" className="image is-24x24 is-rounded" />
-            <h2 className="is-size-5 has-text-white">CoolAccommodation</h2>
-          </NavLink>
-        </div>
+    <nav className={`grid-2-col p-6 ${bg}`}>
+      <div>
+        <NavLink to="/">
+          <img src={logoUrl} alt="cool accommodation logo" className="image is-24x24 is-rounded" />
+        </NavLink>
       </div>
       {loginOrLogout}
     </nav>

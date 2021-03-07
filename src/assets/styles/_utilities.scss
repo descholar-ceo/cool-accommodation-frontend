@@ -15,3 +15,9 @@
 .height-70 {
   height: 70vh;
 }
+
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center stretch;
+}
