@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
 import TextInput from '../components/TextInput';
 import { loginAction } from '../redux/actions';
+import Footer from '../components/Footer';
 
 const LoginPage = ({ loginCredentials, loginAction }) => {
   const handleSubmit = () => {
@@ -24,6 +25,7 @@ const LoginPage = ({ loginCredentials, loginAction }) => {
             </p>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );
