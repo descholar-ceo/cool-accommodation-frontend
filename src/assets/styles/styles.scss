@@ -1,7 +1,9 @@
 @import 'variables';
 
+html,
 body {
   background-color: $white-color;
+  height: 100%;
 }
 
 .home-page-1 {
@@ -15,12 +17,6 @@ body {
   height: 100vh;
 }
 
-.home-page-before-footer {
-  background: linear-gradient($black-middle-transparent, $black-middle-transparent), url("../images/accommodation-6.jpg") center center no-repeat fixed;
-  background-size: cover;
-  height: 20vh;
-}
-
 .login-component {
   background-color: $black-middle-transparent;
   border-radius: 5px;
@@ -29,6 +25,12 @@ body {
 
 .login-container {
   background-image: url("../images/accommodation-0.svg");
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 @import 'utilities'
