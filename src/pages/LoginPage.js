@@ -18,6 +18,7 @@ const LoginPage = ({ loginCredentials, loginAction }) => {
           <TextInput name="email" inputType="text" placeholder="Enter your email here..." />
           <TextInput name="password" inputType="password" placeholder="Enter your password here..." />
           <button onClick={() => handleSubmit()} type="button" className="button is-link is-rounded my-2 is-small">Signin</button>
+          <Link to="/accommodations" className="button is-link is-rounded my-2 is-small">Accommodations</Link>
           <div>
             <p>
               You don&apos;t have an account?
