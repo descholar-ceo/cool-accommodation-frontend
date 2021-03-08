@@ -1,12 +1,15 @@
 import allAccommodations from '../assets/samples/sample-accommodations';
+import AccommodationCard from '../components/AccommodationCard';
+import Footer from '../components/Footer';
 
 const AccommodationPage = () => {
-  const accommLength = allAccommodations.length;
-  console.log({ accommLength });
+  const accommodationsList = allAccommodations.map(accomm => (
+    <AccommodationCard key={accomm.id} accommodationObject={accomm} />));
 
   return (
     <div>
-      <h2>Hey! Welcome to the new world!</h2>
+      { accommodationsList }
+      <Footer />
     </div>
   );
 };
