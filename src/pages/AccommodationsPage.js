@@ -7,8 +7,10 @@ const AccommodationPage = () => {
     <AccommodationCard key={accomm.id} accommodationObject={accomm} />));
 
   return (
-    <div className="mb-6">
-      { accommodationsList }
+    <div className="">
+      <div className="m-2">
+        { accommodationsList }
+      </div>
       <Footer />
     </div>
   );
