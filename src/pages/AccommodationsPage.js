@@ -7,7 +7,7 @@ const AccommodationPage = () => {
     <AccommodationCard key={accomm.id} accommodationObject={accomm} />));
 
   return (
-    <div>
+    <div className="mb-6">
       { accommodationsList }
       <Footer />
     </div>

@@ -19,8 +19,8 @@ const SignupPage = () => (
           </p>
         </div>
       </div>
-      <Footer />
     </div>
+    <Footer />
   </>
 );
 

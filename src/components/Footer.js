@@ -4,7 +4,7 @@ import {
 } from 'react-icons/fa';
 
 const Footer = () => (
-  <footer className="is-centered is-vcentered has-text-centered">
+  <footer className="is-centered is-vcentered has-text-centered m-0">
     <p className="my-2 is-size-7">Rwanda, Western, Rubavu, Gisenyi</p>
     <p className="my-2 is-size-7">+250701234567</p>
     <div className="centered grid-4-col my-2 width-40">
