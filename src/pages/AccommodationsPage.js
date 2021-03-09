@@ -1,10 +1,10 @@
-import allAccommodations from '../assets/samples/sample-accommodations';
+import { accommodations } from '../assets/samples/sample-accommodations';
 import AccommodationCard from '../components/AccommodationCard';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
 const AccommodationPage = () => {
-  const accommodationsList = allAccommodations.map(accomm => (
+  const accommodationsList = accommodations.map(accomm => (
     <AccommodationCard key={accomm.id} accommodationObject={accomm} />));
 
   return (
