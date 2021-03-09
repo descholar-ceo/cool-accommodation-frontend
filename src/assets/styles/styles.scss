@@ -6,6 +6,10 @@ body {
   height: 100%;
 }
 
+img {
+  border-radius: 0.5rem;
+}
+
 .home-page-1 {
   background: linear-gradient($black-middle-transparent, $black-middle-transparent), url("../images/accommodation-1.jpg") center center no-repeat fixed;
   background-size: cover;
