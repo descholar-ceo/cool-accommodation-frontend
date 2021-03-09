@@ -1,5 +1,21 @@
-export default
-[
+export const favourites = [
+  {
+    id: 2,
+    user_id: 1,
+    accommodation_id: 10,
+    created_at: '2021-03-07T13:46:28.107Z',
+    updated_at: '2021-03-07T13:46:28.107Z',
+  },
+  {
+    id: 1,
+    user_id: 1,
+    accommodation_id: 1,
+    created_at: '2021-03-07T13:46:28.091Z',
+    updated_at: '2021-03-07T13:46:28.091Z',
+  },
+];
+
+export const accommodations = [
   {
     id: 10,
     name: 'neza tourist home',
