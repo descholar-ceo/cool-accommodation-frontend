@@ -1,8 +1,16 @@
 import PropTypes from 'prop-types';
 import sampleAccomm from '../assets/images/accommodation-7.jpg';
+import { favourites } from '../assets/samples/sample-accommodations';
 
 const AccommodationCard = ({ accommodationObject }) => {
   const { name, price } = accommodationObject;
+  let classForTag = '';
+  if(favourites.length === 0){
+    classForTag = ''
+  }else{
+
+  }
+  console.log({ favourites });
   return (
     <div className="mb-4">
       <div><img src={sampleAccomm} alt="Sample accomm" /></div>
