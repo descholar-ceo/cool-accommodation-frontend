@@ -9,7 +9,7 @@ const AccommodationPage = () => {
 
   return (
     <div className="">
-      <Navbar />
+      <Navbar bg="has-background-primary-dark" />
       <div className="m-2">
         { accommodationsList }
       </div>

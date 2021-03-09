@@ -2,21 +2,17 @@ import PropTypes from 'prop-types';
 import sampleAccomm from '../assets/images/accommodation-7.jpg';
 
 const AccommodationCard = ({ accommodationObject }) => {
-  const { name, description, price } = accommodationObject;
+  const { name, price } = accommodationObject;
   return (
-    <div>
+    <div className="mb-4">
       <div><img src={sampleAccomm} alt="Sample accomm" /></div>
-      <div>
-        <div>{name}</div>
-        <div>
+      <div className="accommodation-card-footer grid-3-col">
+        <p className="accommodation-footer-legend">{name}</p>
+        <p className="is-size-7 tag is-info is-rounded">
           $
           {price}
-        </div>
-        <div>
-          {description}
-          {' '}
-          rooms
-        </div>
+        </p>
+        <p className="cursor-hand is-size-7 tag is-success is-rounded">favourite</p>
       </div>
     </div>
   );
