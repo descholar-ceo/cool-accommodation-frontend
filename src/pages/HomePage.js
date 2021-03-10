@@ -22,7 +22,7 @@ const HomePage = ({ getAccommodationProfile }) => {
           <Link to="/signin" className="button is-rounded start-free-btn is-uppercase">Start free</Link>
         </div>
       </div>
-      <Footer />
+      <Footer mClass="fixed-elt" />
     </div>
   );
 };

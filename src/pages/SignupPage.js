@@ -20,7 +20,7 @@ const SignupPage = () => (
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer className="fixed-elt" />
   </>
 );
 

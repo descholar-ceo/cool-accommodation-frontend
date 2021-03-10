@@ -2,9 +2,10 @@
 import {
   FaFacebook, FaTwitter, FaInstagram, FaYoutube,
 } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
-const Footer = () => (
-  <footer className="is-centered is-vcentered has-text-centered m-0">
+const Footer = ({ mClass }) => (
+  <footer className={`${mClass} is-centered is-vcentered has-text-centered m-0`}>
     <p className="my-2 is-size-7">Rwanda, Western, Rubavu, Gisenyi</p>
     <p className="my-2 is-size-7">+250701234567</p>
     <div className="centered grid-4-col my-2 width-40">
@@ -16,5 +17,13 @@ const Footer = () => (
     <p className="my-2 is-size-7">CoolAccommodation 2021. All right reserved</p>
   </footer>
 );
+
+Footer.propTypes = {
+  mClass: PropTypes.string,
+};
+
+Footer.defaultProps = {
+  mClass: '',
+};
 
 export default Footer;

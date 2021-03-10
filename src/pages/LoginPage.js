@@ -26,7 +26,7 @@ const LoginPage = ({ loginCredentials, loginAction }) => {
             </p>
           </div>
         </div>
-        <Footer />
+        <Footer mClass="fixed-elt" />
       </div>
     </>
   );
