@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 import PropTypes from 'prop-types';
 import sampleAccomm from '../assets/images/accommodation-7.jpg';
 import { favourites } from '../assets/samples/sample-accommodations';
