@@ -1,16 +1,25 @@
+/* eslint-disable eqeqeq */
 import PropTypes from 'prop-types';
 import sampleAccomm from '../assets/images/accommodation-7.jpg';
 import { favourites } from '../assets/samples/sample-accommodations';
 
 const AccommodationCard = ({ accommodationObject }) => {
   const { name, price } = accommodationObject;
-  let classForTag = '';
-  if(favourites.length === 0){
-    classForTag = ''
-  }else{
-
+  let classForTag = 'is-danger';
+  let textForTag = 'Add to favourite';
+  if (favourites.length === 0) {
+    classForTag = 'is-danger';
+    textForTag = 'Add to favourite';
+  } else {
+    favourites.forEach(currElt => {
+      if (currElt.accommodation_id === accommodationObject.id) {
+        classForTag = 'is-success';
+        textForTag = 'Remove from favourites';
+        console.log({ 'curr elt id is: ': currElt.accommodation_id });
+        console.log({ 'id is : ': accommodationObject.name });
+      }
+    });
   }
-  console.log({ favourites });
   return (
     <div className="mb-4">
       <div><img src={sampleAccomm} alt="Sample accomm" /></div>
@@ -20,7 +29,7 @@ const AccommodationCard = ({ accommodationObject }) => {
           $
           {price}
         </p>
-        <p className="cursor-hand is-size-7 tag is-success is-rounded">favourite</p>
+        <p className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}>{textForTag}</p>
       </div>
     </div>
   );
