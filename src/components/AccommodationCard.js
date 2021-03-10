@@ -15,8 +15,6 @@ const AccommodationCard = ({ accommodationObject }) => {
       if (currElt.accommodation_id === accommodationObject.id) {
         classForTag = 'is-success';
         textForTag = 'Remove from favourites';
-        console.log({ 'curr elt id is: ': currElt.accommodation_id });
-        console.log({ 'id is : ': accommodationObject.name });
       }
     });
   }
