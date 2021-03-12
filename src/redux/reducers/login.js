@@ -1,7 +1,8 @@
 import { GET_ERRORS_ACTION, LOGIN_ACTION, LOGIN_CREDENTIAL_TYPING_ACTION } from '../actions/actionsTypes';
 
+const tokenFromLocalStorage = localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : '';
 const initialState = {
-  token: '',
+  token: tokenFromLocalStorage,
   loginCredentials: {},
   error: '',
 };

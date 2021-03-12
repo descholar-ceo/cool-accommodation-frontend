@@ -43,6 +43,7 @@ export const getAccommodationProfile = accommId => async dispatch => {
 export const loginAction = credentials => async dispatch => {
   try {
     const results = await axios.post(LOGIN_API, credentials);
+    localStorage.setItem('token', JSON.stringify(results.data));
     dispatch({ token: results.data, type: LOGIN_ACTION });
   } catch (err) {
     // console.log({ err });
