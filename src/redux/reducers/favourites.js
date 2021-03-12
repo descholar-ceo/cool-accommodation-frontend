@@ -1,7 +1,8 @@
 import { GET_ALL_FAVOURITES_ACTION, GET_MY_FAVOURITES_ACTION } from '../actions/actionsTypes';
+import { favourites } from '../../assets/samples/sample-accommodations';
 
 const initialState = {
-  allFavourites: [],
+  allFavourites: favourites,
 };
 
 const favouritesReducer = (state = initialState, action) => {
