@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
@@ -6,10 +6,13 @@ import TextInput from '../components/TextInput';
 import { loginAction } from '../redux/actions';
 import Footer from '../components/Footer';
 
-const LoginPage = ({ loginCredentials, loginAction }) => {
+const LoginPage = ({ loginCredentials, loginAction, token }) => {
   const handleSubmit = () => {
     loginAction(loginCredentials);
   };
+  if (token.length > 0) {
+    useHistory().push('/accommodations');
+  }
   return (
     <>
       <Navbar bg="has-background-primary-dark" />
@@ -34,12 +37,14 @@ const LoginPage = ({ loginCredentials, loginAction }) => {
 LoginPage.propTypes = {
   loginCredentials: PropTypes.objectOf(PropTypes.string).isRequired,
   loginAction: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
   // error: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   loginCredentials: state.loginReducer.loginCredentials,
   error: state.loginReducer.error,
+  token: state.loginReducer.token,
 });
 
 export default connect(mapStateToProps, { loginAction })(LoginPage);
