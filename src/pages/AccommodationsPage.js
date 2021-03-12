@@ -1,10 +1,11 @@
-import { accommodations } from '../assets/samples/sample-accommodations';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import AccommodationCard from '../components/AccommodationCard';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
-const AccommodationPage = () => {
-  const accommodationsList = accommodations.map(accomm => (
+const AccommodationPage = ({ allAccommodations }) => {
+  const accommodationsList = allAccommodations.map(accomm => (
     <AccommodationCard key={accomm.id} accommodationObject={accomm} />));
 
   return (
@@ -18,4 +19,12 @@ const AccommodationPage = () => {
   );
 };
 
-export default AccommodationPage;
+AccommodationPage.propTypes = {
+  allAccommodations: PropTypes.objectOf().isRequired,
+};
+
+const mapStateToProps = state => ({
+  allAccommodations: state.accommodationsReducer.allAccommodations,
+});
+
+export default connect(mapStateToProps, null)(AccommodationPage);
