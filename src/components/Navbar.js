@@ -36,9 +36,13 @@ const Navbar = ({ bg, token }) => {
   );
 };
 
+Navbar.defaultProps = {
+  token: '',
+};
+
 Navbar.propTypes = {
   bg: PropTypes.string.isRequired,
-  token: PropTypes.string.isRequired,
+  token: PropTypes.string,
 };
 
 const mapStateToProps = state => ({ token: state.loginReducer.token });
