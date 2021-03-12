@@ -35,7 +35,10 @@ const AccommodationDetails = ({ match: { params } }) => {
         </p>
         <p className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}>{textForTag}</p>
       </div>
-      <div>{description}</div>
+      <div>
+        <h3>Description:</h3>
+        <p>{description}</p>
+      </div>
     </div>
   );
 };
