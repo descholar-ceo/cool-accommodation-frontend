@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import logoUrl from '../assets/images/accommodation-logo.svg';
 
 const Navbar = ({ bg, token }) => {
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.reload();
+  };
   const loginOrLogout = token.length === 0 ? (
     <div className="grid-2-col">
       <div>
@@ -19,7 +23,7 @@ const Navbar = ({ bg, token }) => {
         <NavLink className="button is-small is-primary is-rounded mx-2 is-uppercase is-small" to="/accommodations">Accommodations</NavLink>
       </div>
       <div>
-        <button className="button is-small is-danger is-rounded mx-2 is-uppercase is-small" type="button">Logout</button>
+        <button onClick={() => handleLogout()} className="button is-small is-danger is-rounded mx-2 is-uppercase is-small" type="button">Logout</button>
       </div>
     </div>
   );
