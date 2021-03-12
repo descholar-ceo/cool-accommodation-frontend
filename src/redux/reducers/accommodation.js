@@ -1,7 +1,8 @@
 import { GET_ALL_ACCOMMODATIONS_ACTION, GET_ERRORS_ACTION } from '../actions/actionsTypes';
+import { accommodations } from '../../assets/samples/sample-accommodations';
 
 const initialState = {
-  allAccommodations: [],
+  allAccommodations: accommodations,
 };
 
 const accommodationsReducer = (state = initialState, action) => {
