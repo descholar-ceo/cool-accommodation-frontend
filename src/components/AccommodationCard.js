@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import sampleAccomm from '../assets/images/accommodation-7.jpg';
-import { favourites } from '../assets/samples/sample-accommodations';
 
-const AccommodationCard = ({ accommodationObject }) => {
+const AccommodationCard = ({ accommodationObject, allFavourites }) => {
   const { name, price } = accommodationObject;
   let classForTag = 'is-danger';
   let textForTag = 'Add to favourite';
-  if (favourites.length === 0) {
+  if (allFavourites.length === 0) {
     classForTag = 'is-danger';
     textForTag = 'Add to favourite';
   } else {
-    favourites.forEach(currElt => {
+    allFavourites.forEach(currElt => {
       if (currElt.accommodation_id === accommodationObject.id) {
         classForTag = 'is-success';
         textForTag = 'Remove from favourites';
@@ -35,6 +35,11 @@ const AccommodationCard = ({ accommodationObject }) => {
 
 AccommodationCard.propTypes = {
   accommodationObject: PropTypes.objectOf(PropTypes.object).isRequired,
+  allFavourites: PropTypes.objectOf().isRequired,
 };
 
-export default AccommodationCard;
+const mapStateToProps = state => ({
+  allFavourites: state.favouritesReducer.allFavourites,
+});
+
+export default connect(mapStateToProps, null)(AccommodationCard);
