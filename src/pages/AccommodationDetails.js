@@ -29,7 +29,7 @@ const AccommodationDetails = ({ match: { params } }) => {
   return (
     <>
       <Navbar bg="has-background-primary-dark" />
-      <div className="mb-4">
+      <div className="m-2">
         <div><img src={sampleAccomm} alt="Sample accomm" /></div>
         <div className="accommodation-card-footer grid-3-col">
           <p className="accommodation-footer-legend">{name}</p>
