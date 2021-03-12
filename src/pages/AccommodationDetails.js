@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import { accommodations, favourites } from '../assets/samples/sample-accommodations';
 import sampleAccomm from '../assets/images/accommodation-3.jpg';
 
@@ -25,21 +27,25 @@ const AccommodationDetails = ({ match: { params } }) => {
     });
   }
   return (
-    <div className="mb-4">
-      <div><img src={sampleAccomm} alt="Sample accomm" /></div>
-      <div className="accommodation-card-footer grid-3-col">
-        <p className="accommodation-footer-legend">{name}</p>
-        <p className="is-size-7 tag is-info is-rounded">
-          $
-          {price}
-        </p>
-        <p className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}>{textForTag}</p>
+    <>
+      <Navbar bg="has-background-primary-dark" />
+      <div className="mb-4">
+        <div><img src={sampleAccomm} alt="Sample accomm" /></div>
+        <div className="accommodation-card-footer grid-3-col">
+          <p className="accommodation-footer-legend">{name}</p>
+          <p className="is-size-7 tag is-info is-rounded">
+            $
+            {price}
+          </p>
+          <p className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}>{textForTag}</p>
+        </div>
+        <div>
+          <h3>Description:</h3>
+          <p>{description}</p>
+        </div>
       </div>
-      <div>
-        <h3>Description:</h3>
-        <p>{description}</p>
-      </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
