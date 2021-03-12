@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import sampleAccomm from '../assets/images/accommodation-3.jpg';
 
-const AccommodationDetails = ({ match: { params }, allFavourites, allAccommodations }) => {
+const AccommodationDetails = ({
+  match: { params }, allFavourites, allAccommodations, token,
+}) => {
+  if (token.length === 0) {
+    useHistory().push('/signin');
+  }
   const { accommodationId } = params;
   let accommodationToDisplay = {};
   allAccommodations.forEach(currAccomm => {
@@ -54,11 +60,13 @@ AccommodationDetails.propTypes = {
   match: PropTypes.shape().isRequired,
   allFavourites: PropTypes.objectOf().isRequired,
   allAccommodations: PropTypes.objectOf().isRequired,
+  token: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   allFavourites: state.favouritesReducer.allFavourites,
   allAccommodations: state.accommodationsReducer.allAccommodations,
+  token: state.loginReducer.token,
 });
 
 export default connect(mapStateToProps, null)(AccommodationDetails);
