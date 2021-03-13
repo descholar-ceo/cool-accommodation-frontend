@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import sampleAccomm from '../assets/images/accommodation-3.jpg';
+import { getMyFavouritesAction } from '../redux/actions';
 
 const AccommodationDetails = ({
-  match: { params }, allFavourites, allAccommodations, token,
+  match: { params }, allFavourites, allAccommodations, token, getMyFavouritesAction,
 }) => {
   if (token.length === 0) {
     useHistory().push('/signin');
   }
   const { accommodationId } = params;
   let accommodationToDisplay = {};
+  useEffect(() => { getMyFavouritesAction(); }, []);
   allAccommodations.forEach(currAccomm => {
     if (parseInt(accommodationId, 10) === currAccomm.id) {
       accommodationToDisplay = currAccomm;
@@ -61,6 +64,7 @@ AccommodationDetails.propTypes = {
   allFavourites: PropTypes.objectOf().isRequired,
   allAccommodations: PropTypes.objectOf().isRequired,
   token: PropTypes.string.isRequired,
+  getMyFavouritesAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -69,4 +73,4 @@ const mapStateToProps = state => ({
   token: state.loginReducer.token,
 });
 
-export default connect(mapStateToProps, null)(AccommodationDetails);
+export default connect(mapStateToProps, { getMyFavouritesAction })(AccommodationDetails);

@@ -1,12 +1,11 @@
 import axios from 'axios';
 import {
-  BASE_API, MY_FAVOURITES_API,
+  MY_FAVOURITES_API,
   ACCOMMODATION_PROFILE_API,
   LOGIN_API,
   ALL_ACCOMMODATIONS_API,
 } from '../../assets/samples/apis';
 import {
-  GET_ALL_FAVOURITES_ACTION,
   GET_MY_FAVOURITES_ACTION,
   GET_ACCOMMODATION_PROFILE,
   LOGIN_ACTION,
@@ -14,11 +13,6 @@ import {
   GET_ERRORS_ACTION,
   GET_ALL_ACCOMMODATIONS_ACTION,
 } from './actionsTypes';
-
-export const getAllFavouritesAction = () => async dispatch => {
-  const favouriteAccomm = await axios.get(BASE_API);
-  dispatch({ allFavourites: favouriteAccomm.data, type: GET_ALL_FAVOURITES_ACTION });
-};
 
 export const getAllAccommodations = token => async dispatch => {
   try {
@@ -30,9 +24,13 @@ export const getAllAccommodations = token => async dispatch => {
   }
 };
 
-export const getMyFavouritesAction = myId => async dispatch => {
-  const favouriteAccomm = await axios.get(MY_FAVOURITES_API(myId));
-  dispatch({ myFavourites: favouriteAccomm.data, type: GET_MY_FAVOURITES_ACTION });
+export const getMyFavouritesAction = (myId, token) => async dispatch => {
+  try {
+    const favouriteAccomm = await axios.get(MY_FAVOURITES_API(myId), { headers: { token } });
+    dispatch({ myFavourites: favouriteAccomm.data, type: GET_MY_FAVOURITES_ACTION });
+  } catch (err) {
+    dispatch({ error: err.response.error, type: GET_ERRORS_ACTION });
+  }
 };
 
 export const getAccommodationProfile = accommId => async dispatch => {
