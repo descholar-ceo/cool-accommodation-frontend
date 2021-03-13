@@ -1,6 +1,8 @@
+/* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import jwt_decode from 'jwt-decode';
 import { useHistory } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -15,7 +17,8 @@ const AccommodationDetails = ({
   }
   const { accommodationId } = params;
   let accommodationToDisplay = {};
-  useEffect(() => { getMyFavouritesAction(); }, []);
+  const decodedToken = jwt_decode(token);
+  useEffect(() => { getMyFavouritesAction(decodedToken.id, token); }, []);
   allAccommodations.forEach(currAccomm => {
     if (parseInt(accommodationId, 10) === currAccomm.id) {
       accommodationToDisplay = currAccomm;
