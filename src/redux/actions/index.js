@@ -1,13 +1,11 @@
 import axios from 'axios';
 import {
   MY_FAVOURITES_API,
-  ACCOMMODATION_PROFILE_API,
   LOGIN_API,
   ALL_ACCOMMODATIONS_API,
 } from '../../assets/samples/apis';
 import {
   GET_MY_FAVOURITES_ACTION,
-  GET_ACCOMMODATION_PROFILE,
   LOGIN_ACTION,
   LOGIN_CREDENTIAL_TYPING_ACTION,
   GET_ERRORS_ACTION,
@@ -31,11 +29,6 @@ export const getMyFavouritesAction = (myId, token) => async dispatch => {
   } catch (err) {
     dispatch({ error: err.response.error, type: GET_ERRORS_ACTION });
   }
-};
-
-export const getAccommodationProfile = accommId => async dispatch => {
-  const accommProfile = await axios.get(ACCOMMODATION_PROFILE_API(accommId));
-  dispatch({ accommodationProfile: accommProfile.data, type: GET_ACCOMMODATION_PROFILE });
 };
 
 export const loginAction = credentials => async dispatch => {
