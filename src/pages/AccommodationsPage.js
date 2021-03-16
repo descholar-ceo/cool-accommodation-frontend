@@ -11,17 +11,17 @@ import { getMyFavouritesAction, getAllAccommodations } from '../redux/actions';
 const AccommodationPage = ({
   allAccommodations, token, getMyFavouritesAction, getAllAccommodations,
 }) => {
-  if (token.length === 0) {
+  let accommodationsList;
+  if (!token) {
     useHistory().push('/signin');
+  } else {
+    useEffect(() => {
+      getMyFavouritesAction(jwtDecode(token).id, token);
+      getAllAccommodations(token);
+    }, []);
+    accommodationsList = allAccommodations.map(accomm => (
+      <AccommodationCard key={accomm.id} accommodationObject={accomm} />));
   }
-  const decodedToken = jwtDecode(token);
-  useEffect(() => {
-    getMyFavouritesAction(decodedToken.id, token);
-    getAllAccommodations(token);
-  }, []);
-  const accommodationsList = allAccommodations.map(accomm => (
-    <AccommodationCard key={accomm.id} accommodationObject={accomm} />));
-
   return (
     <div className="">
       <Navbar bg="has-background-primary-dark" />
