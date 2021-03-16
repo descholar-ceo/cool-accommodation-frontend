@@ -11,31 +11,38 @@ import { getMyFavouritesAction } from '../redux/actions';
 const AccommodationDetails = ({
   match: { params }, myFavourites, allAccommodations, token, getMyFavouritesAction,
 }) => {
-  if (token.length === 0) {
+  let name;
+  let price;
+  let description;
+  let classForTag;
+  let textForTag;
+  if (!token) {
     useHistory().push('/signin');
-  }
-  const { accommodationId } = params;
-  let accommodationToDisplay = {};
-  const decodedToken = jwtDecode(token);
-  useEffect(() => { getMyFavouritesAction(decodedToken.id, token); }, []);
-  allAccommodations.forEach(currAccomm => {
-    if (parseInt(accommodationId, 10) === currAccomm.id) {
-      accommodationToDisplay = currAccomm;
-    }
-  });
-  const { name, price, description } = accommodationToDisplay;
-  let classForTag = 'is-danger';
-  let textForTag = 'Add to favourite';
-  if (myFavourites.length === 0) {
-    classForTag = 'is-danger';
-    textForTag = 'Add to favourite';
   } else {
-    myFavourites.forEach(currElt => {
-      if (currElt.accommodation_id === accommodationToDisplay.id) {
-        classForTag = 'is-success';
-        textForTag = 'Remove from favourites';
+    const { accommodationId } = params;
+    let accommodationToDisplay = {};
+    useEffect(() => { getMyFavouritesAction(jwtDecode(token).id, token); }, []);
+    allAccommodations.forEach(currAccomm => {
+      if (parseInt(accommodationId, 10) === currAccomm.id) {
+        accommodationToDisplay = currAccomm;
       }
     });
+    name = accommodationToDisplay.name;
+    price = accommodationToDisplay.price;
+    description = accommodationToDisplay.description;
+    classForTag = 'is-danger';
+    textForTag = 'Add to favourite';
+    if (myFavourites.length === 0) {
+      classForTag = 'is-danger';
+      textForTag = 'Add to favourite';
+    } else {
+      myFavourites.forEach(currElt => {
+        if (currElt.accommodation_id === accommodationToDisplay.id) {
+          classForTag = 'is-success';
+          textForTag = 'Remove from favourites';
+        }
+      });
+    }
   }
   return (
     <>
