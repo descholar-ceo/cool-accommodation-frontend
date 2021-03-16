@@ -9,7 +9,7 @@ import sampleAccomm from '../assets/images/accommodation-3.jpg';
 import { getMyFavouritesAction } from '../redux/actions';
 
 const AccommodationDetails = ({
-  match: { params }, allFavourites, allAccommodations, token, getMyFavouritesAction,
+  match: { params }, myFavourites, allAccommodations, token, getMyFavouritesAction,
 }) => {
   if (token.length === 0) {
     useHistory().push('/signin');
@@ -26,11 +26,11 @@ const AccommodationDetails = ({
   const { name, price, description } = accommodationToDisplay;
   let classForTag = 'is-danger';
   let textForTag = 'Add to favourite';
-  if (allFavourites.length === 0) {
+  if (myFavourites.length === 0) {
     classForTag = 'is-danger';
     textForTag = 'Add to favourite';
   } else {
-    allFavourites.forEach(currElt => {
+    myFavourites.forEach(currElt => {
       if (currElt.accommodation_id === accommodationToDisplay.id) {
         classForTag = 'is-success';
         textForTag = 'Remove from favourites';
@@ -63,14 +63,14 @@ const AccommodationDetails = ({
 AccommodationDetails.propTypes = {
   accommodationId: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.shape().isRequired,
-  allFavourites: PropTypes.objectOf().isRequired,
+  myFavourites: PropTypes.objectOf().isRequired,
   allAccommodations: PropTypes.objectOf().isRequired,
   token: PropTypes.string.isRequired,
   getMyFavouritesAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  allFavourites: state.favouritesReducer.allFavourites,
+  myFavourites: state.favouritesReducer.myFavourites,
   allAccommodations: state.accommodationsReducer.allAccommodations,
   token: state.loginReducer.token,
 });

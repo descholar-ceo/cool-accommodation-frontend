@@ -5,14 +5,21 @@ import Navbar from '../components/Navbar';
 import TextInput from '../components/TextInput';
 import { loginAction } from '../redux/actions';
 import Footer from '../components/Footer';
+import ErrorPopup from '../components/ErrorPopup';
 
-const LoginPage = ({ loginCredentials, loginAction, token }) => {
+const LoginPage = ({
+  loginCredentials, loginAction, token, error,
+}) => {
   const handleSubmit = () => {
     loginAction(loginCredentials);
   };
   if (token.length > 0) {
     useHistory().push('/accommodations');
   }
+  if (error.length > 0) {
+    <ErrorPopup error={error} />;
+  }
+
   return (
     <>
       <Navbar bg="has-background-primary-dark" />
@@ -34,11 +41,15 @@ const LoginPage = ({ loginCredentials, loginAction, token }) => {
   );
 };
 
+LoginPage.defaultProps = {
+  error: '',
+};
+
 LoginPage.propTypes = {
   loginCredentials: PropTypes.objectOf(PropTypes.string).isRequired,
   loginAction: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
-  // error: PropTypes.string.isRequired,
+  error: PropTypes.string,
 };
 
 const mapStateToProps = state => ({

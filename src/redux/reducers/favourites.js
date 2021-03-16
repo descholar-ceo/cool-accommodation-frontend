@@ -1,7 +1,7 @@
 import { GET_MY_FAVOURITES_ACTION } from '../actions/actionsTypes';
 
 const initialState = {
-  allFavourites: [],
+  myFavourites: [],
 };
 
 const favouritesReducer = (state = initialState, action) => {
