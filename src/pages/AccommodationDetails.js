@@ -6,10 +6,11 @@ import { useHistory } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import sampleAccomm from '../assets/images/accommodation-3.jpg';
-import { getMyFavouritesAction } from '../redux/actions';
+import { getMyFavouritesAction, getAllAccommodations } from '../redux/actions';
 
 const AccommodationDetails = ({
-  match: { params }, myFavourites, allAccommodations, token, getMyFavouritesAction,
+  match: { params },
+  myFavourites, allAccommodations, token, getMyFavouritesAction, getAllAccommodations,
 }) => {
   let name;
   let price;
@@ -21,7 +22,10 @@ const AccommodationDetails = ({
   } else {
     const { accommodationId } = params;
     let accommodationToDisplay = {};
-    useEffect(() => { getMyFavouritesAction(jwtDecode(token).id, token); }, []);
+    useEffect(() => {
+      getMyFavouritesAction(jwtDecode(token).id, token);
+      getAllAccommodations(token);
+    }, []);
     allAccommodations.forEach(currAccomm => {
       if (parseInt(accommodationId, 10) === currAccomm.id) {
         accommodationToDisplay = currAccomm;
@@ -74,6 +78,7 @@ AccommodationDetails.propTypes = {
   allAccommodations: PropTypes.objectOf().isRequired,
   token: PropTypes.string.isRequired,
   getMyFavouritesAction: PropTypes.func.isRequired,
+  getAllAccommodations: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -82,4 +87,5 @@ const mapStateToProps = state => ({
   token: state.loginReducer.token,
 });
 
-export default connect(mapStateToProps, { getMyFavouritesAction })(AccommodationDetails);
+export default connect(mapStateToProps,
+  { getMyFavouritesAction, getAllAccommodations })(AccommodationDetails);
