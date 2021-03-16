@@ -12,7 +12,7 @@ const HomePage = () => (
           The best offers for you at any point of your journey.
           Wherever you are, feel yourself like at your own home
         </p>
-        <Link to="/signin" className="button is-rounded start-free-btn is-uppercase">Start free</Link>
+        <Link to="/signin" className="button is-rounded start-free-btn is-uppercase">Explore accommodations</Link>
       </div>
     </div>
     <Footer mClass="fixed-elt" />
