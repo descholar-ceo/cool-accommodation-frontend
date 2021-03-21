@@ -20,15 +20,15 @@ const AccommodationCard = ({ accommodationObject, myFavourites }) => {
   }
   return (
     <div className="mb-4">
-      <div><img src={sampleAccomm} alt="Sample accomm" /></div>
-      <Link to={`/accommodations/${accommodationObject.id}`} className="accommodation-card-footer grid-3-col">
-        <p className="accommodation-footer-legend">{name}</p>
+      <Link to={`/accommodations/${accommodationObject.id}`}><img src={sampleAccomm} alt="Sample accomm" /></Link>
+      <div className="accommodation-card-footer grid-3-col">
+        <Link to={`/accommodations/${accommodationObject.id}`} className="accommodation-footer-legend">{name}</Link>
         <p className="is-size-7 tag is-info is-rounded">
           $
           {price}
         </p>
         <p className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}>{textForTag}</p>
-      </Link>
+      </div>
     </div>
   );
 };
