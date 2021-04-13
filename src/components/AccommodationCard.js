@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addAccommToMyFavsAction } from '../redux/actions';
 import sampleAccomm from '../assets/images/accommodation-7.jpg';
 
-const AccommodationCard = ({ accommodationObject, myFavourites }) => {
+const AccommodationCard = ({ accommodationObject, myFavourites, addAccommToMyFavsAction }) => {
   const { name, price } = accommodationObject;
   let classForTag = 'is-danger';
   let textForTag = 'Add to favourite';
@@ -18,6 +19,7 @@ const AccommodationCard = ({ accommodationObject, myFavourites }) => {
       }
     });
   }
+
   return (
     <div className="mb-4">
       <Link to={`/accommodations/${accommodationObject.id}`}><img src={sampleAccomm} alt="Sample accomm" /></Link>
@@ -36,10 +38,11 @@ const AccommodationCard = ({ accommodationObject, myFavourites }) => {
 AccommodationCard.propTypes = {
   accommodationObject: PropTypes.objectOf(PropTypes.object).isRequired,
   myFavourites: PropTypes.objectOf().isRequired,
+  addAccommToMyFavsAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   myFavourites: state.favouritesReducer.myFavourites,
 });
 
-export default connect(mapStateToProps, null)(AccommodationCard);
+export default connect(mapStateToProps, { addAccommToMyFavsAction })(AccommodationCard);
