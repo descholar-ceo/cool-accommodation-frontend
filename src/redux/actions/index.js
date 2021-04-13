@@ -3,6 +3,7 @@ import {
   MY_FAVOURITES_API,
   LOGIN_API,
   ALL_ACCOMMODATIONS_API,
+  ADD_ACCOMMODATION_TO_FAVOURITES_API,
 } from '../../assets/samples/apis';
 import {
   GET_MY_FAVOURITES_ACTION,
@@ -30,6 +31,15 @@ export const getMyFavouritesAction = (myId, token) => async dispatch => {
     dispatch({ error: err.response.error, type: GET_ERRORS_ACTION });
   }
 };
+export const addAccommodationToMyFavourites = (favData, token) => async dispatch => {
+  try {
+    const favouriteAccomm = await axios
+      .post(ADD_ACCOMMODATION_TO_FAVOURITES_API, { headers: { token } }, favData);
+    dispatch({ myFavourites: favouriteAccomm.data, type: GET_MY_FAVOURITES_ACTION });
+  } catch (err) {
+    dispatch({ error: err.response.error, type: GET_ERRORS_ACTION });
+  }
+};
 
 export const loginAction = credentials => async dispatch => {
   try {
@@ -37,7 +47,6 @@ export const loginAction = credentials => async dispatch => {
     localStorage.setItem('token', JSON.stringify(results.data));
     dispatch({ token: results.data, type: LOGIN_ACTION });
   } catch (err) {
-    // console.log({ err });
     dispatch({ error: err.response.data, type: GET_ERRORS_ACTION });
   }
 };
