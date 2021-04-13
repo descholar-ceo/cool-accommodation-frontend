@@ -31,7 +31,7 @@ export const getMyFavouritesAction = (myId, token) => async dispatch => {
     dispatch({ error: err.response.error, type: GET_ERRORS_ACTION });
   }
 };
-export const addAccommodationToMyFavourites = (favData, token) => async dispatch => {
+export const addAccommToMyFavsAction = (favData, token) => async dispatch => {
   try {
     const favouriteAccomm = await axios
       .post(ADD_ACCOMMODATION_TO_FAVOURITES_API, { headers: { token } }, favData);
