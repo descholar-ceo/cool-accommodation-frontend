@@ -40,6 +40,15 @@ export const addAccommToMyFavsAction = (favData, token) => async dispatch => {
     dispatch({ error: err.response.error, type: GET_ERRORS_ACTION });
   }
 };
+export const removeAccommFromMyFavsAction = (favId, token) => async dispatch => {
+  try {
+    const favouriteAccomm = await axios
+      .delete(ADD_ACCOMMODATION_TO_FAVOURITES_API, { headers: { token } }, favData);
+    dispatch({ myFavourites: favouriteAccomm.data, type: GET_MY_FAVOURITES_ACTION });
+  } catch (err) {
+    dispatch({ error: err.response.error, type: GET_ERRORS_ACTION });
+  }
+};
 
 export const loginAction = credentials => async dispatch => {
   try {
