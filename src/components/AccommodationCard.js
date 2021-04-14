@@ -1,13 +1,21 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
-import { addAccommToMyFavsAction } from '../redux/actions';
+import { addAccommToMyFavsAction, removeAccommFromMyFavsAction } from '../redux/actions';
 import sampleAccomm from '../assets/images/accommodation-7.jpg';
 
-const AccommodationCard = ({ accommodationObject, myFavourites, addAccommToMyFavsAction }) => {
+const AccommodationCard = ({
+  accommodationObject,
+  myFavourites,
+  addAccommToMyFavsAction,
+  removeAccommFromMyFavsAction,
+  token,
+}) => {
   const { name, price } = accommodationObject;
   let classForTag = 'is-danger';
   let textForTag = 'Add to favourite';
+  let addOrRemoveFromFavs;
   if (myFavourites.length === 0) {
     classForTag = 'is-danger';
     textForTag = 'Add to favourite';
@@ -16,6 +24,10 @@ const AccommodationCard = ({ accommodationObject, myFavourites, addAccommToMyFav
       if (currElt.accommodation_id === accommodationObject.id) {
         classForTag = 'is-success';
         textForTag = 'Remove from favourites';
+        addOrRemoveFromFavs = removeAccommFromMyFavsAction(jwtDecode(token).id, currElt.id, token);
+      } else {
+        addOrRemoveFromFavs = addAccommToMyFavsAction(jwtDecode(token).id,
+          { accomodation_id: accommodationObject.id }, token);
       }
     });
   }
@@ -29,7 +41,13 @@ const AccommodationCard = ({ accommodationObject, myFavourites, addAccommToMyFav
           $
           {price}
         </p>
-        <p className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}>{textForTag}</p>
+        <button
+          onClick={() => addOrRemoveFromFavs}
+          className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}
+          type="button"
+        >
+          {textForTag}
+        </button>
       </div>
     </div>
   );
@@ -39,10 +57,15 @@ AccommodationCard.propTypes = {
   accommodationObject: PropTypes.objectOf(PropTypes.object).isRequired,
   myFavourites: PropTypes.objectOf().isRequired,
   addAccommToMyFavsAction: PropTypes.func.isRequired,
+  removeAccommFromMyFavsAction: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   myFavourites: state.favouritesReducer.myFavourites,
+  token: state.loginReducer.token,
 });
 
-export default connect(mapStateToProps, { addAccommToMyFavsAction })(AccommodationCard);
+export default connect(mapStateToProps, {
+  addAccommToMyFavsAction, removeAccommFromMyFavsAction,
+})(AccommodationCard);
