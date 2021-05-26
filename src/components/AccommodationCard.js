@@ -24,9 +24,11 @@ const AccommodationCard = ({
       if (currElt.accommodation_id === accommodationObject.id) {
         classForTag = 'is-success';
         textForTag = 'Remove from favourites';
-        addOrRemoveFromFavs = removeAccommFromMyFavsAction(jwtDecode(token).id, currElt.id, token);
+        addOrRemoveFromFavs = () => {
+          removeAccommFromMyFavsAction(jwtDecode(token).id, currElt.id, token);
+        };
       } else {
-        addOrRemoveFromFavs = addAccommToMyFavsAction(jwtDecode(token).id,
+        addOrRemoveFromFavs = () => addAccommToMyFavsAction(jwtDecode(token).id,
           { accomodation_id: accommodationObject.id }, token);
       }
     });
