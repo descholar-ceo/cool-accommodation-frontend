@@ -44,7 +44,7 @@ const AccommodationCard = ({
           {price}
         </p>
         <button
-          onClick={() => addOrRemoveFromFavs}
+          onClick={() => addOrRemoveFromFavs()}
           className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}
           type="button"
         >
