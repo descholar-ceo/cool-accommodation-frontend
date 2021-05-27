@@ -35,15 +35,15 @@ const AccommodationDetails = ({
     price = accommodationToDisplay.price;
     description = accommodationToDisplay.description;
     classForTag = 'is-danger';
-    textForTag = 'Add to favourite';
+    textForTag = 'Like';
     if (myFavourites.length === 0) {
       classForTag = 'is-danger';
-      textForTag = 'Add to favourite';
+      textForTag = 'Like';
     } else {
       myFavourites.forEach(currElt => {
         if (currElt.accommodation_id === accommodationToDisplay.id) {
           classForTag = 'is-success';
-          textForTag = 'Remove from favourites';
+          textForTag = 'Unlike';
         }
       });
     }
@@ -59,7 +59,12 @@ const AccommodationDetails = ({
             $
             {price}
           </p>
-          <p className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}>{textForTag}</p>
+          <button
+            type="button"
+            className={`cursor-hand is-size-7 tag button ${classForTag} is-rounded`}
+          >
+            {textForTag}
+          </button>
         </div>
         <div>
           <h3>Description:</h3>
