@@ -13,26 +13,10 @@ const AccommodationCard = ({
   token,
 }) => {
   const { name, price } = accommodationObject;
-  let classForTag;
-  let textForTag;
-  let addOrRemoveFromFavs;
-  if (myFavourites.length === 0) {
-    classForTag = 'is-danger button';
-    textForTag = 'Like';
-  } else if (myFavourites.length > 0) {
+  const favIds = [];
+  if (myFavourites.length > 0) {
     myFavourites.forEach(currElt => {
-      if (currElt.accommodation_id === accommodationObject.id) {
-        classForTag = 'is-success button';
-        textForTag = 'Unlike';
-        addOrRemoveFromFavs = () => {
-          removeAccommFromMyFavsAction(jwtDecode(token).id, currElt.id, token);
-        };
-      } else {
-        classForTag = 'is-danger button';
-        textForTag = 'Like';
-        addOrRemoveFromFavs = () => addAccommToMyFavsAction(jwtDecode(token).id,
-          { accomodation_id: accommodationObject.id }, token);
-      }
+      favIds.push(currElt.accommodation_id);
     });
   }
 
@@ -46,11 +30,22 @@ const AccommodationCard = ({
           {price}
         </p>
         <button
-          onClick={() => addOrRemoveFromFavs()}
-          className={`cursor-hand is-size-7 tag ${classForTag} is-rounded`}
+          onClick={
+            favIds.includes(accommodationObject.id) ? () => {
+              removeAccommFromMyFavsAction(jwtDecode(token).id, accommodationObject.id, token);
+            } : () => {
+              addAccommToMyFavsAction(jwtDecode(token).id,
+                { accomodation_id: accommodationObject.id }, token);
+            }
+            }
+          className={`cursor-hand is-size-7 tag button ${
+            favIds.includes(accommodationObject.id) ? 'is-danger' : 'is-success'
+          } is-rounded`}
           type="button"
         >
-          {textForTag}
+          {
+            favIds.includes(accommodationObject.id) ? 'Like' : 'Unlike'
+          }
         </button>
       </div>
     </div>
