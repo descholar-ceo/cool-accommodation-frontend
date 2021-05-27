@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import TextInput from '../components/TextInput';
+import { signupAction, signupDetailsTypingAction } from '../redux/actions';
 
 const SignupPage = ({ token }) => {
   if (token.length > 0) {
@@ -16,7 +17,6 @@ const SignupPage = ({ token }) => {
         <div className="login-component p-4">
           <TextInput inputType="email" placeholder="email" />
           <TextInput inputType="password" placeholder="password" />
-          <TextInput inputType="password" placeholder="confirm password" />
           <button type="button" className="button is-link is-rounded my-2 is-small">Signup</button>
           <div>
             <p>
@@ -39,4 +39,4 @@ const mapStateToProps = state => ({
   token: state.loginReducer.token,
 });
 
-export default connect(mapStateToProps, null)(SignupPage);
+export default connect(mapStateToProps, { signupAction, signupDetailsTypingAction })(SignupPage);

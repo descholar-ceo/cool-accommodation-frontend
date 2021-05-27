@@ -14,6 +14,7 @@ import {
   GET_ERRORS_ACTION,
   GET_ALL_ACCOMMODATIONS_ACTION,
   SIGNUP_ACTION,
+  SIGNUP_DETAILS_TYPING_ACTION,
 } from './actionsTypes';
 
 export const getAllAccommodations = token => async dispatch => {
@@ -76,4 +77,8 @@ export const signupAction = userDetails => async dispatch => {
 
 export const loginCredentialTypingAction = credentials => ({
   credentials, type: LOGIN_CREDENTIAL_TYPING_ACTION,
+});
+
+export const signupDetailsTypingAction = signupDetails => ({
+  signupDetails, type: SIGNUP_DETAILS_TYPING_ACTION,
 });
