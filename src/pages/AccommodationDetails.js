@@ -74,7 +74,6 @@ const AccommodationDetails = ({
             type="button"
             className={`cursor-hand is-size-7 tag button ${classForTag} is-rounded`}
             onClick={favArr.includes(accommodationToDisplay.id) ? () => {
-              console.log({ availableFavArr: favArr });
               removeAccommFromMyFavsAction(jwtDecode(token).id, accommodationToDisplay.id, token);
             } : () => {
               addAccommToMyFavsAction(jwtDecode(token).id,
