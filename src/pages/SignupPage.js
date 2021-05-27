@@ -6,7 +6,10 @@ import Navbar from '../components/Navbar';
 import TextInput from '../components/TextInput';
 import { signupAction } from '../redux/actions';
 
-const SignupPage = ({ token }) => {
+const SignupPage = ({ token, signupAction, signupDetails }) => {
+  const handleSubmit = () => {
+    signupAction(signupDetails);
+  };
   if (token.length > 0) {
     useHistory().push('/accommodations');
   }
@@ -17,7 +20,7 @@ const SignupPage = ({ token }) => {
         <div className="login-component p-4">
           <TextInput name="email" inputType="email" placeholder="email" />
           <TextInput name="password" inputType="password" placeholder="password" />
-          <button type="button" className="button is-link is-rounded my-2 is-small">Signup</button>
+          <button onClick={() => handleSubmit()} type="button" className="button is-link is-rounded my-2 is-small">Signup</button>
           <div>
             <p>
               Already have an account?
@@ -33,10 +36,13 @@ const SignupPage = ({ token }) => {
 
 SignupPage.propTypes = {
   token: PropTypes.string.isRequired,
+  signupAction: PropTypes.func.isRequired,
+  signupDetails: PropTypes.objectOf().isRequired,
 };
 
 const mapStateToProps = state => ({
   token: state.loginReducer.token,
+  signupDetails: state.signupReducer.signupDetails,
 });
 
 export default connect(mapStateToProps, { signupAction })(SignupPage);

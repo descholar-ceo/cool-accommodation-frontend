@@ -65,6 +65,7 @@ export const loginAction = credentials => async dispatch => {
 };
 
 export const signupAction = userDetails => async dispatch => {
+  console.log({ submittedData: userDetails });
   try {
     const results = await axios.post(SIGNUP_API, userDetails);
     localStorage.setItem('token', JSON.stringify(results.data));
