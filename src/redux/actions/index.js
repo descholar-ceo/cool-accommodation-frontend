@@ -10,11 +10,10 @@ import {
 import {
   GET_MY_FAVOURITES_ACTION,
   LOGIN_ACTION,
-  LOGIN_CREDENTIAL_TYPING_ACTION,
+  CREDENTIAL_TYPING_ACTION,
   GET_ERRORS_ACTION,
   GET_ALL_ACCOMMODATIONS_ACTION,
   SIGNUP_ACTION,
-  SIGNUP_DETAILS_TYPING_ACTION,
 } from './actionsTypes';
 
 export const getAllAccommodations = token => async dispatch => {
@@ -75,10 +74,6 @@ export const signupAction = userDetails => async dispatch => {
   }
 };
 
-export const loginCredentialTypingAction = credentials => ({
-  credentials, type: LOGIN_CREDENTIAL_TYPING_ACTION,
-});
-
-export const signupDetailsTypingAction = signupDetails => ({
-  signupDetails, type: SIGNUP_DETAILS_TYPING_ACTION,
+export const credentialTypingAction = credentials => ({
+  credentials, type: CREDENTIAL_TYPING_ACTION,
 });

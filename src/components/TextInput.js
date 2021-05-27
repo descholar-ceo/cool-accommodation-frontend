@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { loginCredentialTypingAction } from '../redux/actions';
+import { credentialTypingAction } from '../redux/actions';
 
 const TextInput = ({
-  placeholder, inputType, name, previousLoginCred, captureCredential,
+  placeholder, inputType, name, previousCred, captureCredential,
 }) => {
   const [state, setState] = useState({ loginCredentials: {} });
   const handleChange = ({ target: { name, value } }) => {
     setState({ ...state, [name]: value });
-    captureCredential({ ...previousLoginCred, [name]: value });
-    // console.log(previousLoginCred);
+    captureCredential({ ...previousCred, [name]: value });
+    // console.log(previousCred);
   };
   return (
     <div>
@@ -29,13 +29,21 @@ TextInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  previousLoginCred: PropTypes.objectOf(PropTypes.string).isRequired,
+  previousCred: PropTypes.objectOf(PropTypes.string).isRequired,
   captureCredential: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({ previousLoginCred: state.loginReducer.loginCredentials });
+const mapStateToProps = state => {
+  let prev;
+  if (state.loginReducer.loginCredentials) {
+    prev = state.loginReducer.loginCredentials;
+  } else {
+    prev = state.signupReducer.signupDetails;
+  }
+  return { previousCred: prev };
+};
 const mapDispatchToProps = dispatch => ({
-  captureCredential: credential => dispatch(loginCredentialTypingAction(credential)),
+  captureCredential: credential => dispatch(credentialTypingAction(credential)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextInput);
