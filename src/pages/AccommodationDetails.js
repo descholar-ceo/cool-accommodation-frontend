@@ -46,19 +46,17 @@ const AccommodationDetails = ({
     name = accommodationToDisplay.name;
     price = accommodationToDisplay.price;
     description = accommodationToDisplay.description;
-    classForTag = 'is-danger';
-    textForTag = 'Like';
-    if (myFavourites.length === 0) {
-      classForTag = 'is-danger';
-      textForTag = 'Like';
-    } else {
+    if (myFavourites.length > 0) {
       myFavourites.forEach(currElt => {
-        favArr.push(currElt.id);
+        favArr.push(currElt.accommodation_id);
         if (currElt.accommodation_id === accommodationToDisplay.id) {
           classForTag = 'is-success';
           textForTag = 'Unlike';
         }
       });
+    } else {
+      classForTag = 'is-danger';
+      textForTag = 'Like';
     }
   }
   return (
@@ -76,6 +74,7 @@ const AccommodationDetails = ({
             type="button"
             className={`cursor-hand is-size-7 tag button ${classForTag} is-rounded`}
             onClick={favArr.includes(accommodationToDisplay.id) ? () => {
+              console.log({ availableFavArr: favArr });
               removeAccommFromMyFavsAction(jwtDecode(token).id, accommodationToDisplay.id, token);
             } : () => {
               addAccommToMyFavsAction(jwtDecode(token).id,
