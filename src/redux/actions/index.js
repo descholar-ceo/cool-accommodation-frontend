@@ -5,6 +5,7 @@ import {
   ALL_ACCOMMODATIONS_API,
   ADD_ACCOMMODATION_TO_FAVOURITES_API,
   REMOVE_ACCOMMODATION_FROM_FAVOURITES_API,
+  SIGNUP_API,
 } from '../../assets/samples/apis';
 import {
   GET_MY_FAVOURITES_ACTION,
@@ -12,6 +13,7 @@ import {
   LOGIN_CREDENTIAL_TYPING_ACTION,
   GET_ERRORS_ACTION,
   GET_ALL_ACCOMMODATIONS_ACTION,
+  SIGNUP_ACTION,
 } from './actionsTypes';
 
 export const getAllAccommodations = token => async dispatch => {
@@ -57,6 +59,16 @@ export const loginAction = credentials => async dispatch => {
     const results = await axios.post(LOGIN_API, credentials);
     localStorage.setItem('token', JSON.stringify(results.data));
     dispatch({ token: results.data, type: LOGIN_ACTION });
+  } catch (err) {
+    dispatch({ error: err.response.data, type: GET_ERRORS_ACTION });
+  }
+};
+
+export const signupAction = userDetails => async dispatch => {
+  try {
+    const results = await axios.post(SIGNUP_API, userDetails);
+    localStorage.setItem('token', JSON.stringify(results.data));
+    dispatch({ token: results.data, type: SIGNUP_ACTION });
   } catch (err) {
     dispatch({ error: err.response.data, type: GET_ERRORS_ACTION });
   }
