@@ -6,22 +6,34 @@ import { useHistory } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import sampleAccomm from '../assets/images/accommodation-3.jpg';
-import { getMyFavouritesAction, getAllAccommodations } from '../redux/actions';
+import {
+  getMyFavouritesAction,
+  getAllAccommodations,
+  addAccommToMyFavsAction,
+  removeAccommFromMyFavsAction,
+} from '../redux/actions';
 
 const AccommodationDetails = ({
   match: { params },
-  myFavourites, allAccommodations, token, getMyFavouritesAction, getAllAccommodations,
+  myFavourites,
+  allAccommodations,
+  token,
+  getMyFavouritesAction,
+  getAllAccommodations,
+  addAccommToMyFavsAction,
+  removeAccommFromMyFavsAction,
 }) => {
   let name;
   let price;
   let description;
   let classForTag;
   let textForTag;
+  const favArr = [];
+  let accommodationToDisplay = {};
   if (!token) {
     useHistory().push('/signin');
   } else {
     const { accommodationId } = params;
-    let accommodationToDisplay = {};
     useEffect(() => {
       getMyFavouritesAction(jwtDecode(token).id, token);
       getAllAccommodations(token);
@@ -41,6 +53,7 @@ const AccommodationDetails = ({
       textForTag = 'Like';
     } else {
       myFavourites.forEach(currElt => {
+        favArr.push(currElt.id);
         if (currElt.accommodation_id === accommodationToDisplay.id) {
           classForTag = 'is-success';
           textForTag = 'Unlike';
@@ -62,6 +75,12 @@ const AccommodationDetails = ({
           <button
             type="button"
             className={`cursor-hand is-size-7 tag button ${classForTag} is-rounded`}
+            onClick={favArr.includes(accommodationToDisplay.id) ? () => {
+              removeAccommFromMyFavsAction(jwtDecode(token).id, accommodationToDisplay.id, token);
+            } : () => {
+              addAccommToMyFavsAction(jwtDecode(token).id,
+                { accomodation_id: accommodationToDisplay.id }, token);
+            }}
           >
             {textForTag}
           </button>
@@ -84,6 +103,8 @@ AccommodationDetails.propTypes = {
   token: PropTypes.string.isRequired,
   getMyFavouritesAction: PropTypes.func.isRequired,
   getAllAccommodations: PropTypes.func.isRequired,
+  addAccommToMyFavsAction: PropTypes.func.isRequired,
+  removeAccommFromMyFavsAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -92,5 +113,9 @@ const mapStateToProps = state => ({
   token: state.loginReducer.token,
 });
 
-export default connect(mapStateToProps,
-  { getMyFavouritesAction, getAllAccommodations })(AccommodationDetails);
+export default connect(mapStateToProps, {
+  getMyFavouritesAction,
+  getAllAccommodations,
+  addAccommToMyFavsAction,
+  removeAccommFromMyFavsAction,
+})(AccommodationDetails);
