@@ -14,6 +14,9 @@ A frontend web app that allows users to browse houses and like or unlike them, b
 
 Please find [Backend source codes](https://github.com/descholar-ceo/cool-accommodation)
 
+## To add more houses
+In order to add more houses, kindly use an admin dashboard: [Here](https://cool-accommodation-backend.herokuapp.com/admin)
+
 ## Project Screenshot
 
 ![Homepage](docs/home-scr.png)
