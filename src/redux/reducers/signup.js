@@ -5,7 +5,7 @@ const initialState = {
   error: '',
 };
 
-const loginReducer = (state = initialState, action) => {
+const signupReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGNUP_ACTION:
       return { ...state, token: action.token };
@@ -16,4 +16,4 @@ const loginReducer = (state = initialState, action) => {
   }
 };
 
-export default loginReducer;
+export default signupReducer;
