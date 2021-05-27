@@ -20,6 +20,7 @@ const TextInput = ({
         placeholder={placeholder}
         name={name}
         className="input is-small my-1"
+        required
       />
     </div>
   );
