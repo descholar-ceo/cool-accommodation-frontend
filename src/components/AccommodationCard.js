@@ -25,9 +25,11 @@ const AccommodationCard = ({
         classForTag = 'is-success';
         textForTag = 'Remove from favourites';
         addOrRemoveFromFavs = () => {
+          // console.log({ 'token from approved:': token });
           removeAccommFromMyFavsAction(jwtDecode(token).id, currElt.id, token);
         };
       } else {
+        console.log({ 'token from not approved:': token });
         addOrRemoveFromFavs = () => addAccommToMyFavsAction(jwtDecode(token).id,
           { accomodation_id: accommodationObject.id }, token);
       }

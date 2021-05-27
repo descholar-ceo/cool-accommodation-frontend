@@ -35,13 +35,15 @@ export const getMyFavouritesAction = (myId, token) => async dispatch => {
 export const addAccommToMyFavsAction = (myId, favData, token) => async dispatch => {
   try {
     const favouriteAccomm = await axios
-      .post(ADD_ACCOMMODATION_TO_FAVOURITES_API(myId), { headers: { token } }, favData);
+      .post(ADD_ACCOMMODATION_TO_FAVOURITES_API(myId), { favourite: favData },
+        { headers: { token } });
     dispatch({ myFavourites: favouriteAccomm.data, type: GET_MY_FAVOURITES_ACTION });
   } catch (err) {
     dispatch({ error: err.response.error, type: GET_ERRORS_ACTION });
   }
 };
 export const removeAccommFromMyFavsAction = (myId, favId, token) => async dispatch => {
+  console.log({ 'sentToken=': token });
   try {
     const favouriteAccomm = await axios
       .delete(REMOVE_ACCOMMODATION_FROM_FAVOURITES_API(myId, favId), { headers: { token } });
