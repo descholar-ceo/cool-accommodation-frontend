@@ -43,7 +43,6 @@ export const addAccommToMyFavsAction = (myId, favData, token) => async dispatch 
   }
 };
 export const removeAccommFromMyFavsAction = (myId, favId, token) => async dispatch => {
-  console.log({ 'sentToken=': token });
   try {
     const favouriteAccomm = await axios
       .delete(REMOVE_ACCOMMODATION_FROM_FAVOURITES_API(myId, favId), { headers: { token } });
