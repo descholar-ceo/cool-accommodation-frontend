@@ -13,23 +13,23 @@ const AccommodationCard = ({
   token,
 }) => {
   const { name, price } = accommodationObject;
-  let classForTag = 'is-danger button';
-  let textForTag = 'Add to favourite';
+  let classForTag;
+  let textForTag;
   let addOrRemoveFromFavs;
   if (myFavourites.length === 0) {
     classForTag = 'is-danger button';
-    textForTag = 'Add to favourite';
-  } else {
+    textForTag = 'Like';
+  } else if (myFavourites.length > 0) {
     myFavourites.forEach(currElt => {
       if (currElt.accommodation_id === accommodationObject.id) {
         classForTag = 'is-success button';
-        textForTag = 'Remove from favourites';
+        textForTag = 'Unlike';
         addOrRemoveFromFavs = () => {
-          // console.log({ 'token from approved:': token });
           removeAccommFromMyFavsAction(jwtDecode(token).id, currElt.id, token);
         };
       } else {
-        // console.log({ 'token from not approved:': token });
+        classForTag = 'is-danger button';
+        textForTag = 'Like';
         addOrRemoveFromFavs = () => addAccommToMyFavsAction(jwtDecode(token).id,
           { accomodation_id: accommodationObject.id }, token);
       }
