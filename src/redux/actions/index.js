@@ -65,10 +65,10 @@ export const loginAction = credentials => async dispatch => {
 };
 
 export const signupAction = userDetails => async dispatch => {
-  console.log({ submittedData: userDetails });
   try {
     const results = await axios.post(SIGNUP_API, userDetails);
     localStorage.setItem('token', JSON.stringify(results.data));
+    window.location.reload();
     dispatch({ token: results.data, type: SIGNUP_ACTION });
   } catch (err) {
     dispatch({ error: err.response.data, type: GET_ERRORS_ACTION });
