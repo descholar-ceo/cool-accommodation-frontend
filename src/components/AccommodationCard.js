@@ -39,12 +39,12 @@ const AccommodationCard = ({
             }
             }
           className={`cursor-hand is-size-7 tag button ${
-            favIds.includes(accommodationObject.id) ? 'is-danger' : 'is-success'
+            favIds.includes(accommodationObject.id) ? 'is-success' : 'is-danger'
           } is-rounded`}
           type="button"
         >
           {
-            favIds.includes(accommodationObject.id) ? 'Like' : 'Unlike'
+            favIds.includes(accommodationObject.id) ? 'Unlike' : 'Like'
           }
         </button>
       </div>
