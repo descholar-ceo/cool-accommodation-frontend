@@ -1,0 +1,46 @@
+@import 'variables';
+
+html,
+body {
+  background-color: $white-color;
+  height: 100%;
+}
+
+img {
+  border-radius: 0.5rem;
+}
+
+.home-page-1 {
+  background: linear-gradient($black-middle-transparent, $black-middle-transparent), url("../images/accommodation-1.jpg") center center no-repeat fixed;
+  background-size: cover;
+  height: 100vh;
+}
+
+.home-page-2 {
+  background-color: $light-blue-color;
+  height: 100vh;
+}
+
+.login-component {
+  background-color: $black-middle-transparent;
+  border-radius: 5px;
+  color: $white-color;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.login-container {
+  background-image: url("../images/accommodation-0.svg");
+}
+
+.accommodation-footer-legend {
+  font-size: 0.9rem;
+}
+
+footer {
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+@import 'utilities'
